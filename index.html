@@ -7,8 +7,21 @@
   </head>
   <body>
     <h1>Memory Game!</h1>
-    <div id="game">
+
+    <div id="grid-container">
+      <div id="score-container">
+        <div id="moves" class="hidden">Moves: 0</div>
+        <div id="start-container">
+          <button id="start">Start Game!</button>
+        </div>
+        <div id="best-score" class="hidden">Best Score: 0</div>
+      </div>
+      <div class="hidden" id="game"></div>
     </div>
+    <div id="stop-container">
+      <button id="stop" class="hidden">Stop Game</button>
+    </div>
+    <h1 id="win">You Win!!</h1>
     <script src="script.js"></script>
   </body>
 </html>

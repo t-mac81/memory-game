@@ -1,7 +1,77 @@
+body {
+  background-color: #475569;
+  font-family: Arial, Helvetica, sans-serif;
+}
+h1 {
+  text-align: center;
+}
+#grid-container {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  flex-direction: column;
+}
+#game {
+  align-items: center;
+  justify-items: center;
+  display: inline-grid;
+  grid-template-columns: repeat(4, 150px);
+  background-color: #94a3b8;
+  border-radius: 10px;
+  padding: 10px 10px 15px 10px;
+  margin: 0px;
+}
 #game div {
   border: 1px solid black;
-  width: 15%;
-  height: 200px;
-  margin: 10px;
+  border-radius: 10px;
+  width: 90%;
+  height: 150px;
+  margin: 10px 0 0 0px;
   display: inline-block;
+  transition: background-color 0.5s;
+}
+.hidden {
+  opacity: 0;
+}
+#game,
+#start,
+#end {
+  transition: opacity 0.5s;
+}
+#score-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  width: 620px;
+  margin-bottom: 10px;
+}
+
+#stop-container {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+#moves,
+#best-score {
+  background-color: #94a3b8;
+  border-radius: 10px;
+  padding: 5px 10px 5px 10px;
+}
+
+#start,
+#stop {
+  background-color: #94a3b8;
+  border: none;
+  border-radius: 10px;
+  padding: 5px 10px 5px 10px;
+  font-size: 15px;
+}
+#start {
+  cursor: pointer;
+}
+#win {
+  color: white;
+  text-align: center;
+  opacity: 0;
 }
