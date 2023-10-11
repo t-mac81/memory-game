@@ -6,6 +6,7 @@ const displayMoves = document.querySelector('#moves');
 const displayBestScore = document.querySelector('#best-score');
 const winText = document.querySelector('#win');
 const cards = gameContainer.children;
+let bestScore = Number(localStorage.getItem('bestScore')) || 100;
 let clickCount = 0;
 let moves = 0;
 let gameStatus = 0;
@@ -36,6 +37,7 @@ function handleStart() {
   startButton.removeEventListener('click', handleStart);
   startButton.style.cursor = 'default';
   stopButton.style.cursor = 'pointer';
+  displayBestScore.textContent = `Best Score: ${bestScore}`;
 }
 
 // end game button functionality
@@ -113,11 +115,9 @@ function handleCardClick(event) {
     displayMoves.textContent = `Moves: ${moves}`;
 
     // handle game status
-    if (gameStatus === 6) {
-      winText.style.opacity = 1;
-      stopButton.textContent = 'Play Again';
-    }
+    if (gameStatus === 6) finishGame();
   }
+  // change card background color
   event.target.style.backgroundColor = color;
 }
 
@@ -147,6 +147,16 @@ function addMatch(color) {
 function hideCards() {
   for (let card of cards) {
     if (!card.classList.contains('match')) card.removeAttribute('style');
+  }
+}
+
+function finishGame() {
+  winText.style.opacity = 1;
+  stopButton.textContent = 'Play Again';
+  if (moves < bestScore) {
+    bestScore = moves;
+    displayBestScore.textContent = `Best Score: ${bestScore}`;
+    localStorage.setItem('bestScore', bestScore);
   }
 }
 
